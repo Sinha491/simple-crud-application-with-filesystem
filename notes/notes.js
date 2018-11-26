@@ -42,10 +42,24 @@ var removeNote = (title) => {
   saveNotes(filteredNote);
   return filteredNote.length < allNotes.length ? true : false;
 };
+var updateNote = (title, body) => {
+  var allNotes = fetchNotes();
+  var filteredNote = allNotes.filter((note) => note.title === title);
+  var filteredUpdateNote = allNotes.filter((note) => note.title !== title);
+  if(filteredNote){
+    filteredNote[0].body = body;
+    filteredUpdateNote.push(filteredNote);
+    saveNotes(filteredUpdateNote);
+    return true;
+  } else {
+    return false;
+  }
+};
 module.exports = {
   logNote,
   getAll,
   addNote,
   getNote,
   removeNote,
+  updateNote,
 };

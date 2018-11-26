@@ -38,7 +38,7 @@ if(command == 'list'){
 } else if(command == 'add') {
   var note = notes.addNote(allcommands.title, allcommands.body);
   if(note){
-    console.log(`New note added`);
+    console.log(`New note added.`);
     notes.logNote(note);
   } else {
     console.log('Note already added.');
@@ -55,5 +55,7 @@ if(command == 'list'){
   var message = note ? 'Note deleted.' : 'Note not avaialable.';
   console.log(message);
 } else if(command == 'update'){
-  console.log('Updating one notes');
+  var note = notes.updateNote(allcommands.title, allcommands.body);
+  var message = note ? 'Note updated.' : 'Note not avaialable.';
+  console.log(message);
 }
